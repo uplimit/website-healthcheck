@@ -16,8 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: test
-        uses: johnlokerse/website-healthcheck@v2
+        uses: uplimit/website-healthcheck@v4
         with:
-          web-url: "https://www.lokerse.dev"
-          scan-for-text: "lokerse.dev"
+          web-url: "https://uplimit.com"
+          scan-for-text: "uplimit"
+          maximum-retries: 10
+          duration-between-retries: 5
 ```
