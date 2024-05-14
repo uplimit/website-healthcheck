@@ -4,6 +4,12 @@ branding:
   icon: activity
   color: white
 inputs:
+  maximum-retries:
+    description: "Specify the maximum number of retries"
+    required: true
+  duration-between-retries:
+    description: "Specify the duration between retries"
+    required: true
   web-url:
     description: "Specify the URL to scan"
     required: true
@@ -17,5 +23,5 @@ runs:
       shell: bash
     - run: chmod +x ${{ github.action_path }}/scan-website.sh
       shell: bash
-    - run: ${{ github.action_path }}/scan-website.sh ${{ inputs.web-url }} ${{ inputs.scan-for-text }}
+    - run: ${{ github.action_path }}/scan-website.sh ${{ inputs.web-url }} ${{ inputs.scan-for-text }} $${{ inputs.maximum-retries }} $${{ inputs.duration-between-retries }}
       shell: bash
