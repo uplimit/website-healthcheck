@@ -9,7 +9,7 @@ duration_between_retries=$4
 retry_count=0
 
 check_website() {
-    status_code=$(curl --max_time "${duration_between_retries}" --silent --location --head --output /dev/null --write-out "%{http_code}" "${website_url}")
+    status_code=$(curl -m "${duration_between_retries}" --silent --location --head --output /dev/null --write-out "%{http_code}" "${website_url}")
 
     if [ "${status_code}" != "200" ]; then
         echo "${website_url} is unreachable or returned non-200 status (${status_code})" >&2
